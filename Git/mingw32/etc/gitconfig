@@ -1,0 +1,14 @@
+[http]
+	sslCAInfo = E:/AGitJia/Git/mingw32/ssl/certs/ca-bundle.crt
+	sslBackend = openssl
+[diff "astextplain"]
+	textconv = astextplain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[pack]
+	packsizelimit = 2g
+[credential]
+	helper = manager
