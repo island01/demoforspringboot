@@ -19,13 +19,14 @@ public class CountExample {
     public static void main(String[] args){
         //创建线程池  newCachedThreadPool-- 缓存
         ExecutorService exec = Executors.newCachedThreadPool();
+        //同步对象 用于保持在0至指定最大值之间的一个计数值
         final Semaphore semaphore = new Semaphore(threadTotal);
         for(int index = 0; index < clientTotal; index++){
             exec.execute(() ->{
                 try {
-                    semaphore.acquire();
+                    semaphore.acquire();//获取
                     add();
-                    semaphore.release();
+                    semaphore.release();//释放RepairOrderQuery
                 } catch (InterruptedException e) {
                     log.error("exception",e);
                 }
